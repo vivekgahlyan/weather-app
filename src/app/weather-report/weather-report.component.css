@@ -1,0 +1,18 @@
+.ogroup{
+    color: dimgray;
+}
+
+.h-label{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: indigo;
+    color: white;
+    font: caption;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+}

@@ -1,0 +1,51 @@
+<div ngxUiLoaderBlurred>
+    <div class="container-fluid">
+        <div class="row">
+            <label class="h-label">Check Weather Report <span style="font-size: 22px;">&#9925;</span></label>
+        </div>
+        <div class="row" style="text-align: center;padding-top: 5px;padding-bottom: 10px;">
+            <select class="form-select" id="myselect" (change)="getWeather()">
+                <option value="" selected>-- Select City --</option>
+                <option *ngFor="let city of citiesValues" value="{{ city }}">{{ city }}</option>
+            </select>
+        </div>
+        <div class="row" *ngIf="showData" style="padding-top: 30px;padding-bottom: 30px;">
+            <div class="card" style="width: 35rem;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="thumbnail">
+                            <div>
+                                <img src="{{ weatherDetails.current.condition.icon }}"
+                                    style="height:50px;" 
+                                    title="{{ weatherDetails.current.condition.text }}"/>
+                            </div>
+                            <h5 class="card-title">{{ weatherDetails.current.condition.text }} </h5>
+                        </div>
+                    </div>
+                    <p style="font-style: italic;font-size: 13px;margin-bottom:0;">{{ weatherDetails.location.name }}, {{ weatherDetails.location.country }} <span style="color:#0A7A66">(latitude: {{ weatherDetails.location.lat }}, longitude: {{ weatherDetails.location.lon }})</span></p>
+                    <p style="font-style: italic;font-size: 13px;margin : 0; padding-top:0;">Time Zone: {{ weatherDetails.location.tz_id }}</p>
+                    <p style="font-style: italic;font-size: 13px;margin : 0; padding-top:0;">Local Time: {{ weatherDetails.location.localtime }}</p>
+                    <hr>
+                    <p style="font-style: italic;font-size: 15px;padding-top:1px;margin-bottom:0;"><b>Current Temprature:</b> {{ weatherDetails.current.temp_c }}&#8451;</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Real Feel:</b> {{ weatherDetails.current.feelslike_c }}&#8451;</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Humidity:</b> {{ weatherDetails.current.humidity }}%</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Wind:</b> {{ weatherDetails.current.wind_dir }} {{ weatherDetails.current.wind_kph }} km/h</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Wind Gusts:</b> {{ weatherDetails.current.gust_kph }} km/h</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Visibility:</b> {{ weatherDetails.current.vis_km }} km ({{weatherDetails.current.vis_miles}} miles)</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Cloud Cover:</b> {{ weatherDetails.current.cloud }}%</p>
+                    <p style="font-style: italic;font-size: 15px;margin-bottom:0;"><b>Pressure:</b> &#8592;&#8594;{{ weatherDetails.current.pressure_mb }} mb</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!showData">
+            <p style="text-align: center;color: darkblue;font: bold;font-style: italic;">Please select city to
+                check
+                weather
+                report</p>
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom">
+    <p style="text-align: center;font-size: 12px;">Made with &#10084; by <a href="https://www.linkedin.com/in/kumar-vivek/" target="_blank">Vivek Gahlyan</a>, &#169; 2021 City Weather Now. All Rights Reserved.</p>
+</div>
+<ngx-ui-loader fgsColor="#ffffff" pbColor="#ff2600" text="Loading, Please Wait!"></ngx-ui-loader>
